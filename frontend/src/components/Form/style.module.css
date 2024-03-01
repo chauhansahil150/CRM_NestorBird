@@ -1,0 +1,14 @@
+.button{
+    background-color:"blue";
+    color:'white';
+    width:'fit-content';
+    margin:'5px';
+    border: 'none';
+    padding:' 10px 15px';
+    border-radius: '3px';
+    cursor: 'pointer';
+  }
+  .button:hover{
+    background-color: black;
+    color: aliceblue;
+  }
