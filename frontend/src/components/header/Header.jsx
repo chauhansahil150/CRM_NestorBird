@@ -8,37 +8,29 @@ function Header() {
   const navigate=useNavigate();
   function logout(e) {
     e.preventDefault();
-    window.sessionStorage.clear();
-    userData.setUser({ isLogin: false, name: "Guest" });
-    fetch(BACKEND_URL+'/logout', {
-      credentials: "include",
-    });
-    window.sessionStorage.removeItem('user');
-    navigate('/login');
+   localStorage.removeItem("token");
+   navigate('/login')
   }
   return (
     <div className={style.container}>
         <div className={style.inner}>
             <div className={style.left}>
             {
-              userData?.user?.isLogin?
-             <>
+             
               <Link  to="/home">Home</Link>
-            <Link  to="/dashboard">Dashboard</Link></>
-            :<></>
             }
             </div>
             {console.log(userData)}
             <div className={style.right}>
               {
-                userData?.user?.isLogin ?
+                localStorage.getItem("token") ?
                   <Link onClick={logout}>Logout</Link>
                     : <>
                     <Link to='/login'>Login</Link>
                     <Link to='/register'>Register</Link>
                     </>
               }
-              <span className="ml-3 text-gray-300">{userData?.user?.email || 'Guest'}</span>
+              {/* <span className="ml-3 text-gray-300">{userData?.user?.email || 'Guest'}</span> */}
             </div>
         </div>
 

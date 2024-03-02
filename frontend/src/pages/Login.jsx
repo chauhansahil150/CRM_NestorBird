@@ -32,9 +32,13 @@ const LoginForm = () => {
       });
 
       if (response.status === 200) {
-        const token = await response.json();
-        localStorage.setItem("token",token.access_token)
-        navigate('/home');
+        const data = await response.json();
+        localStorage.setItem("token",data.access_token)
+        if(data.role=='user'){
+          navigate('/home');
+        }else if(data.role='admin'){
+          navigate('/admin/home')
+        }
       } else if(response.status==401){
         setErr('Wrong Password');
       }else if(response.status==404){
@@ -73,11 +77,6 @@ const LoginForm = () => {
           path="/register"
           name="Register"
           data="Don't have an account?"
-        />
-        <FormLink
-          path="/user/forgot-password"
-          name="Click"
-          data="Forgot Password?"
         />
         {/* <FormLink path="/seller/login" name="Click" data="Seller?" />
         <FormLink path="/transporter/login" name="Click" data="Transporter ?" /> */}

@@ -46,7 +46,7 @@ const AddEntryForm = ({ handleAddEntry }) => {
     );
 };
 
-const CRMPage = () => {
+const AdminHome = () => {
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
@@ -284,9 +284,6 @@ const CRMPage = () => {
                                     )}
                                 </td>
                                 <td>
-                                    {customer.posted_by === 'scrap' ? (
-                                        <></>
-                                    ) : (
                                         <>
                                             {customer.isEditing ? (
                                                 <button className="save-btn" onClick={() => handleSave(customer.id)}>Save</button>
@@ -295,7 +292,6 @@ const CRMPage = () => {
                                             )}
                                             <button className="delete-btn" onClick={() => handleDelete(customer.id)}>Delete</button>
                                         </>
-                                    )}
                                 </td>
                             </tr>
                         ))
@@ -306,4 +302,4 @@ const CRMPage = () => {
     );
 };
 
-export default CRMPage;
+export default AdminHome;

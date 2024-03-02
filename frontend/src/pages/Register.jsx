@@ -34,13 +34,13 @@ function Register() {
         body: JSON.stringify({name,region, email, password }),
       });
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         const user = await response.json();
-        if(user.success){
+        /*if(user.success){
             setMsg(user.message);
             setErr('');
-        }
-       
+        }*/
+        alert("signup successfully")
       } else if(response.status==409){
         setMsg('');
         setErr('user Already exists');
@@ -83,7 +83,7 @@ function Register() {
       <p className={err.length==0?"text-green-600":"text-red-600"}>{msg?msg:err}</p>
       <Button name="Register" type="submit" />
       <FormLink
-        path="/user/login"
+        path="/login"
         name="login"
         data="Already have an account?"
       />
